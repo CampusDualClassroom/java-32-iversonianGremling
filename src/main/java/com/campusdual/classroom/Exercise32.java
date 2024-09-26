@@ -13,6 +13,10 @@ public class Exercise32 {
     }
 
     public static String generateStringToSave(String string) {
+        if (string == null) {
+            generateUserInputToSave();
+        }
+        return string;
 
     }
 
@@ -27,7 +31,11 @@ public class Exercise32 {
     }
 
     public static void printToFile(String string) {
-
+        try (PrintWriter out = new PrintWriter("src/main/resources/data.txt")) {
+            out.println(string);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
 
